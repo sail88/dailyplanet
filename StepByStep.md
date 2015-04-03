@@ -6,7 +6,7 @@ A step by step guide to reviewing today's homework with the class.
 2. npm install --save ejs express pg lodash sequelize pg-hstore
 3. createdb newsfeed_app
 4. sequelize init
-5. modify config.json
+5. modify config.json file like we did in class (i.e. change the db to be postgres, etc)
 6. sequelize model:create --name Article --attribtues title:string,author:string,content:text,fiction:boolean
 7. sequelize db:migrate
 8. REPL
