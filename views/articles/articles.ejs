@@ -11,10 +11,12 @@
 		var title = ejsArticles[i].title;
 		var author = ejsArticles[i].author;
 		var story = ejsArticles[i].content;
-		%> <div> <%=title%> by <%=author%> <%=ejsArticles[i].id%></div>
-		<div> <%=story%></div><br>
+		var storyLink = 'articles/'+ejsArticles[i].id;
+		%> <div> <a href=<%=storyLink%>> <%=title%></a> by <%=author%> </div>
+		<br>
 <%	};   %>
 <br>
-<a href="articles/new">Add a new story</a>
+<a href="articles/new">Add a new story</a><br>
+<br><a href="/">Daily Planet Homepage</a>
 </body>
 </html>

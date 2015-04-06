@@ -7,6 +7,8 @@ var app = express();
 app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({extended: true}));
 
+app.use( express.static( "images" ) );
+
 // Refactor connection and query code
 var db = require("./models");
 
@@ -38,7 +40,7 @@ app.get('/articles/:id', function(req, res) {
 
 	db.Article.find(jsID).then(function(jsOneArticle){
 		res.render('articles/article',{ejsArticle:jsOneArticle});
-		console.log(jsID,jsOneArticle);
+		console.log(jsID);
 	})
 });
 
