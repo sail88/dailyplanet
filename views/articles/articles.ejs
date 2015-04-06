@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>All our articles</title>
+</head>
+<body>
+	<h1>All the news that fits.</h1>
+
+	<%for (var i = 0; i < ejsArticles.length; i++) {
+		var title = ejsArticles[i].title;
+		var author = ejsArticles[i].author;
+		var story = ejsArticles[i].content;
+		%> <div> <%=title%> by <%=author%> <%=ejsArticles[i].id%></div>
+		<div> <%=story%></div><br>
+<%	};   %>
+<br>
+<a href="articles/new">Add a new story</a>
+</body>
+</html>

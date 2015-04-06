@@ -11,7 +11,10 @@ app.use(bodyParser.urlencoded({extended: true}));
 var db = require("./models");
 
 app.get('/articles', function(req,res) {
-  console.log("GET /articles");
+	db.Article.all().then(function(jsArticles){
+		res.render('articles/articles.ejs',{ejsArticles:jsArticles});
+  		console.log("GET /articles");
+  	})
 });
 
 app.get('/articles/new', function(req,res) {
@@ -19,13 +22,25 @@ app.get('/articles/new', function(req,res) {
 });
 
 app.post('/articles', function(req,res) {
-  console.log(req.body);
+	var newTitle = req.body.aTitle;
+	var newAuthor = req.body.aAuthor;
+	var newContent = req.body.aContent;
+
+	console.log("New Author",newAuthor);
+
+	db.Article.create({title:newTitle,author:newAuthor,content:newContent}).then(function(taco) {
+		res.redirect('/articles');
+  	})
 });
 
 app.get('/articles/:id', function(req, res) {
-  console.log(req.body);
-  
-})
+	var jsID = req.params.id;
+
+	db.Article.find(jsID).then(function(jsOneArticle){
+		res.render('articles/article',{ejsArticle:jsOneArticle});
+		console.log(jsID,jsOneArticle);
+	})
+});
 
 app.get('/', function(req,res) {
   res.render('site/index.ejs');
